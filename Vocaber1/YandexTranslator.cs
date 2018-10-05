@@ -39,7 +39,7 @@ namespace Vocaber1
                     WebRequest request = WebRequest.Create("https://translate.yandex.net/api/v1.5/tr.json/translate?"
                         + "key=" + this.apiKeys[currentApiKey]
                         + "&text=" + HttpUtility.UrlEncode(s)
-                        + "&options=5&lang=" + lang); 
+                        + "&options=5&lang=" + lang);
 
                     WebResponse response = request.GetResponse();
 

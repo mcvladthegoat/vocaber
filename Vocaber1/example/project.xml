@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<ArrayOfVocabItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <VocabItem>
+    <isRaw>false</isRaw>
+    <isValid>true</isValid>
+    <No>1</No>
+    <OldValue>London</OldValue>
+    <NewValue>Лондон</NewValue>
+  </VocabItem>
+  <VocabItem>
+    <isRaw>false</isRaw>
+    <isValid>true</isValid>
+    <No>2</No>
+    <OldValue>Moscow</OldValue>
+    <NewValue>Москва</NewValue>
+  </VocabItem>
+  <VocabItem>
+    <isRaw>false</isRaw>
+    <isValid>true</isValid>
+    <No>3</No>
+    <OldValue>New York</OldValue>
+    <NewValue>Нью-Йорк</NewValue>
+  </VocabItem>
+  <VocabItem>
+    <isRaw>true</isRaw>
+    <isValid>true</isValid>
+    <No>4</No>
+    <OldValue>Berlin</OldValue>
+    <NewValue>Берлин</NewValue>
+  </VocabItem>
+  <VocabItem>
+    <isRaw>false</isRaw>
+    <isValid>false</isValid>
+    <No>5</No>
+    <OldValue>asdasd</OldValue>
+    <NewValue>в DOC</NewValue>
+  </VocabItem>
+  <VocabItem>
+    <isRaw>true</isRaw>
+    <isValid>true</isValid>
+    <No>6</No>
+    <OldValue>Keyboard</OldValue>
+    <NewValue>Клавиатура</NewValue>
+  </VocabItem>
+  <VocabItem>
+    <isRaw>false</isRaw>
+    <isValid>true</isValid>
+    <No>7</No>
+    <OldValue>mouse</OldValue>
+    <NewValue>мышь</NewValue>
+  </VocabItem>
+</ArrayOfVocabItem>
