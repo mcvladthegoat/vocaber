@@ -383,6 +383,41 @@ namespace Vocaber1
 
         }
 
+        private void mergeToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Multiselect = true;
+            openFileDialog1.Title = "Select a TXT or similar file";
+            // Show the Dialog.  
+            // If the user clicked OK in the dialog and  
+            // a .CUR file was selected, open it.  
+            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
+                {
+                    return;
+                }
+                // получаем выбранный файл
+                StreamWriter sw = new StreamWriter(saveFileDialog1.FileName, false, System.Text.Encoding.Unicode);
+                string line, resultFilePath = saveFileDialog1.FileName;
+                int lineCounter = 0;
+                foreach(string sourceFilePath in openFileDialog1.FileNames)
+                {
+                    System.IO.StreamReader sr = new System.IO.StreamReader(sourceFilePath);
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        sw.WriteLine(line);
+                        lineCounter++;
+                    }
+                    sr.Close();
+                }
+
+                sw.Close();
+                MessageBox.Show("Successfully merged. Total lines: " + lineCounter.ToString());
+            }
+        }
+
         private void dataGridViewBad_KeyDown(object sender, KeyEventArgs e)
         {
             try
