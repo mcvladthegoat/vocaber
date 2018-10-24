@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
+using System.Text.RegularExpressions;
 
 namespace Vocaber1
 {
@@ -24,22 +25,21 @@ namespace Vocaber1
             this.apiKeys = new List<string>();
             this.RefreshAPIKeys();
             yt = new YandexTranslator(this.apiKeys);
-            //infoForm = new InfoForm();
             this.projectPath = "";
             bgWorker = new System.ComponentModel.BackgroundWorker();
             bgWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(bgWorker_DoWork);
             bgWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(bgWorker_ProgressChanged);
             bgWorker.RunWorkerCompleted += bgWorker_RunWorkerCompleted;
             bgWorker.WorkerReportsProgress = true;
+            this.isPlainProject = true;
         }
-        //InfoForm infoForm;
         YandexTranslator yt;
         List<string> apiKeys;
-        List<VocabItem> vocab;
-        List<VocabItem> badvocab;
+        List<VocabItem> vocab, badvocab;
         public string _projectPath, importFileName;
         BackgroundWorker bgWorker;
         public int totalLines;
+        public bool isPlainProject;
 
         public String projectPath { get { return this._projectPath; } set { this._projectPath = value; this.toolStripStatusLabel2.Text = value; } }
 
@@ -51,7 +51,6 @@ namespace Vocaber1
         public void IndentRows()
         {
             DataGridViewCellStyle style = new DataGridViewCellStyle();
-
                 for (int i = 0; i < this.vocab.Count; i++)
                 {
                     if (!this.vocab[i].isValid)
@@ -65,15 +64,6 @@ namespace Vocaber1
                         this.IndentRowById(i, "valid");
                     }
                 }
-                //dataGridViewMain.Rows[e.RowIndex].DefaultCellStyle = style;
-
-            
-            //style.Font = new Font(dataGridViewMain.Font, FontStyle.Italic);
-            //for (int i = 0; i < this.badvocab.Count; i++)
-            //{
-            //    //DataGridViewRow c = dataGridViewMain.Rows[i];
-            //    dataGridViewMain.Rows[this.badvocab[i].No-1].DefaultCellStyle = style;
-            //}
         }
 
         public void IndentRowById(int rowId, string mode)
@@ -123,9 +113,6 @@ namespace Vocaber1
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Title = "Select a TXT or similar file";
-            // Show the Dialog.  
-            // If the user clicked OK in the dialog and  
-            // a .CUR file was selected, open it.  
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 vocab.Clear(); badvocab.Clear();
@@ -148,6 +135,7 @@ namespace Vocaber1
                 projectPath = openFileDialog1.FileName;
                 this.UpdateStats();
                 this.IndentRows();
+
                 dataGridViewMain.Columns["No"].ReadOnly = true;
                 dataGridViewMain.Columns["OldValue"].ReadOnly = true;
                 dataGridViewBad.Columns["No"].ReadOnly = true;
@@ -157,21 +145,11 @@ namespace Vocaber1
                 dataGridViewBad.Columns["NewValue"].HeaderText = "Translated";
                 dataGridViewMain.Columns["OldValue"].HeaderText = "Original";
                 dataGridViewMain.Columns["NewValue"].HeaderText = "Translated";
-                //this.IndentRowById(1, "raw");
             }
         }
 
         private void dataGridViewMain_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //int a;
-            //DataGridViewCellStyle style = new DataGridViewCellStyle();
-            //foreach (DataGridViewColumn c in dataGridViewMain.Columns)
-            //{
-            //    c.DefaultCellStyle.Font = new Font("Arial Black", 16.5F, GraphicsUnit.Pixel);
-            //}
-            //style.Font = new Font(dataGridViewMain.Font, FontStyle.Bold);
-            //dataGridViewMain.Rows[e.RowIndex].DefaultCellStyle = style;
-            //this.vocab[e.RowIndex].NewValue = "1239219321983213";
         }
 
         private void dataGridViewMain_KeyDown(object sender, KeyEventArgs e)
@@ -184,12 +162,6 @@ namespace Vocaber1
                     this.IndentRowById(rowId, "valid");
                     this.vocab[rowId].isValid = true;
                     this.vocab[rowId].isRaw = false;
-                    //// set isValid = true
-                    //int curindex = dataGridViewMain.CurrentCell.RowIndex + 1;
-                    //dataGridViewMain.Rows[curindex].Selected = false;
-                    //curindex = (this.vocab.Count > curindex) ? curindex + 1 : curindex;
-                    ////dataGridViewMain.SelectedRows.Clear();
-                    //dataGridViewMain.Rows[curindex].Selected = true;
                 }
                 if (e.KeyValue == 114) //F3 - RAW (need to check)
                 {
@@ -203,9 +175,15 @@ namespace Vocaber1
                     this.vocab[rowId].isValid = false;
                     this.vocab[rowId].isRaw = false;
                 }
+                if (e.KeyValue == 116) //F5 - COPY OLD AND VERIFY
+                {
+                    this.IndentRowById(rowId, "valid");
+                    this.vocab[rowId].isValid = true;
+                    this.vocab[rowId].isRaw = false;
+                    this.vocab[rowId].NewValue = this.vocab[rowId].OldValue;
+                }
                 this.UpdateBadVocabluary();
                 this.UpdateStats();
-                int b;
             }
             catch (Exception ex)
             {
@@ -268,7 +246,6 @@ namespace Vocaber1
 
         private void bgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            //this.UpdateBadVocabluary();
             dataGridViewMain.DataSource = vocab;
             dataGridViewBad.DataSource = badvocab; 
             this.UpdateStats();
@@ -277,25 +254,15 @@ namespace Vocaber1
 
         private void importToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Displays an OpenFileDialog so the user can select a Cursor.  
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Title = "Select a TXT or similar file";
-            // Show the Dialog.  
-            // If the user clicked OK in the dialog and  
-            // a .CUR file was selected, open it.  
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 // Start translating
                 vocab = new List<VocabItem>(); badvocab = new List<VocabItem>();
-
-                //InfoForm infoForm = new InfoForm();
-                //infoForm.ShowDialog();
                 this.importFileName = openFileDialog1.FileName;
                 this.totalLines = File.ReadLines(this.importFileName).Count();
                 bgWorker.RunWorkerAsync();
-                //yt.Translate(inputTextBox.Text, 'en-ru');
-                // Assign the cursor in the Stream to the Form's Cursor property.  
-                //this.Cursor = new Cursor(openFileDialog1.OpenFile());
             }
         }
 
@@ -315,7 +282,6 @@ namespace Vocaber1
             VocabItem[] tmp;
             tmp = this.vocab.ToArray();
             XmlSerializer formatter = new XmlSerializer(typeof(VocabItem[]));
-            //File.Delete(projectPath);
             using (FileStream fs = new FileStream(projectPath, FileMode.Create))
             {
                 formatter.Serialize(fs, tmp);
@@ -332,8 +298,7 @@ namespace Vocaber1
             }
             // получаем выбранный файл
             string filename = saveFileDialog1.FileName;
-            // сохраняем текст в файл
-
+            // сохран
 
             VocabItem[] tmp;
             tmp = this.vocab.ToArray();
@@ -383,14 +348,49 @@ namespace Vocaber1
 
         }
 
+        private void toolStripSeparator2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //Structured import
+        private void importStructuredVocabularyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.isPlainProject = true;
+
+        }
+
+        private void autoVerifyByPatternToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string regpattern = Microsoft.VisualBasic.Interaction.InputBox("Your pattern", "Type pattern", "\\b.{1,}[{]");
+            if (regpattern.Length == 0)
+            {
+                return;
+            }
+            Regex rx = new Regex(@regpattern);
+            int counter = 0;
+            for(int i = 0; i < this.vocab.Count; i++)
+            {
+                Match match = rx.Match(this.vocab[i].OldValue);
+                if (match.Success)
+                {
+                    this.IndentRowById(i, "valid");
+                    this.vocab[i].NewValue = this.vocab[i].OldValue;
+                    this.vocab[i].isValid = true;
+                    this.vocab[i].isRaw = false;
+                    counter++;
+                }
+            }
+            this.UpdateBadVocabluary();
+            this.UpdateStats();
+            MessageBox.Show("Verifying finished. Total lines: " + counter.ToString());
+        }
+
         private void mergeToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Multiselect = true;
             openFileDialog1.Title = "Select a TXT or similar file";
-            // Show the Dialog.  
-            // If the user clicked OK in the dialog and  
-            // a .CUR file was selected, open it.  
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 SaveFileDialog saveFileDialog1 = new SaveFileDialog();
@@ -428,12 +428,6 @@ namespace Vocaber1
                     this.IndentRowById(rowId, "valid");
                     this.vocab[rowId].isValid = true;
                     this.vocab[rowId].isRaw = false;
-                    //// set isValid = true
-                    //int curindex = dataGridViewMain.CurrentCell.RowIndex + 1;
-                    //dataGridViewMain.Rows[curindex].Selected = false;
-                    //curindex = (this.vocab.Count > curindex) ? curindex + 1 : curindex;
-                    ////dataGridViewMain.SelectedRows.Clear();
-                    //dataGridViewMain.Rows[curindex].Selected = true;
                 }
                 if (e.KeyValue == 114) //F3 - RAW (need to check)
                 {
@@ -447,9 +441,21 @@ namespace Vocaber1
                     this.vocab[rowId].isValid = false;
                     this.vocab[rowId].isRaw = false;
                 }
+                if (e.KeyValue == 116) //F4 - NOT VALID
+                {
+                    this.IndentRowById(rowId, "notvalid");
+                    this.vocab[rowId].isValid = false;
+                    this.vocab[rowId].isRaw = false;
+                }
+                //if (e.KeyValue == 117) //F5 - COPY OLD AND VERIFY
+                //{
+                //    this.IndentRowById(rowId, "valid");
+                //    this.vocab[rowId].isValid = true;
+                //    this.vocab[rowId].isRaw = false;
+                //    this.vocab[rowId].NewValue = this.vocab[rowId].OldValue;
+                //}
                 this.UpdateBadVocabluary();
                 this.UpdateStats();
-                int b;
             }
             catch (Exception ex)
             {

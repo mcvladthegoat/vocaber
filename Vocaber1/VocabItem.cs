@@ -11,7 +11,7 @@ namespace Vocaber1
     public class VocabItem
     {
         string oldValue, newValue;
-        public bool isRaw, isValid;
+        public bool isRaw, isValid, isReadonly;
         int position;
 
         #region Properties.
@@ -48,13 +48,14 @@ namespace Vocaber1
             }
         }
 
-        public VocabItem(string oldValue, string newValue, int position, bool isRaw, bool isValid)
+        public VocabItem(string oldValue, string newValue, int position, bool isRaw, bool isValid, bool isReadonly = false)
         {
             this.oldValue = oldValue;
             this.newValue = newValue.Trim();
             this.position = position;
             this.isRaw = isRaw;
             this.isValid = isValid;
+            this.isReadonly = isReadonly;
         }
     }
 }
