@@ -98,7 +98,7 @@ namespace Vocaber1
 
             for (int i = 0; i < vocab.Count; i++)
             {
-                System.Console.WriteLine(vocab[i].isValid);
+                Console.WriteLine(vocab[i].isValid);
                 if (!vocab[i].isValid)
                 {
                     badvocab.Add(vocab[i]);
