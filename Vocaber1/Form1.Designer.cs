@@ -35,6 +35,7 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importStructuredVocabularyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,6 +46,8 @@
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.redoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.autoVerifyByPatternToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fixWordEndingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uIColorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,6 +66,8 @@
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -70,10 +75,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.vocabItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.importStructuredVocabularyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.autoVerifyByPatternToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportFormattedVocabularyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBad)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -130,6 +132,7 @@
             this.saveAsToolStripMenuItem,
             this.toolStripSeparator1,
             this.exportToolStripMenuItem,
+            this.exportFormattedVocabularyToolStripMenuItem,
             this.toolStripSeparator3,
             this.loadAPIKeysToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
@@ -140,58 +143,65 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.openToolStripMenuItem.Text = "Open Project";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // importToolStripMenuItem
             // 
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.importToolStripMenuItem.Text = "Import Plain Vocabluary";
             this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
+            // 
+            // importStructuredVocabularyToolStripMenuItem
+            // 
+            this.importStructuredVocabularyToolStripMenuItem.Name = "importStructuredVocabularyToolStripMenuItem";
+            this.importStructuredVocabularyToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
+            this.importStructuredVocabularyToolStripMenuItem.Text = "Import Structured Vocabulary";
+            this.importStructuredVocabularyToolStripMenuItem.Click += new System.EventHandler(this.importStructuredVocabularyToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(197, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(226, 6);
             this.toolStripSeparator2.Click += new System.EventHandler(this.toolStripSeparator2_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.saveAsToolStripMenuItem.Text = "Save As...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(197, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(226, 6);
             // 
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
-            this.exportToolStripMenuItem.Text = "Export Vocabluary";
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
+            this.exportToolStripMenuItem.Text = "Export Vocabulary";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(197, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(226, 6);
             // 
             // loadAPIKeysToolStripMenuItem
             // 
             this.loadAPIKeysToolStripMenuItem.Name = "loadAPIKeysToolStripMenuItem";
-            this.loadAPIKeysToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.loadAPIKeysToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.loadAPIKeysToolStripMenuItem.Text = "Load API Keys";
             this.loadAPIKeysToolStripMenuItem.Click += new System.EventHandler(this.loadAPIKeysToolStripMenuItem_Click);
             // 
@@ -200,7 +210,8 @@
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.undoToolStripMenuItem,
             this.redoToolStripMenuItem,
-            this.autoVerifyByPatternToolStripMenuItem});
+            this.autoVerifyByPatternToolStripMenuItem,
+            this.fixWordEndingsToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.editToolStripMenuItem.Text = "Edit";
@@ -208,14 +219,28 @@
             // undoToolStripMenuItem
             // 
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.undoToolStripMenuItem.Text = "Undo";
             // 
             // redoToolStripMenuItem
             // 
             this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.redoToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.redoToolStripMenuItem.Text = "Redo";
+            // 
+            // autoVerifyByPatternToolStripMenuItem
+            // 
+            this.autoVerifyByPatternToolStripMenuItem.Name = "autoVerifyByPatternToolStripMenuItem";
+            this.autoVerifyByPatternToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.autoVerifyByPatternToolStripMenuItem.Text = "Auto verify by pattern";
+            this.autoVerifyByPatternToolStripMenuItem.Click += new System.EventHandler(this.autoVerifyByPatternToolStripMenuItem_Click);
+            // 
+            // fixWordEndingsToolStripMenuItem
+            // 
+            this.fixWordEndingsToolStripMenuItem.Name = "fixWordEndingsToolStripMenuItem";
+            this.fixWordEndingsToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.fixWordEndingsToolStripMenuItem.Text = "Fix word endings";
+            this.fixWordEndingsToolStripMenuItem.Click += new System.EventHandler(this.fixWordEndingsToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem
             // 
@@ -373,6 +398,25 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Keyboard Tips";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(41, 115);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(50, 13);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "Verify old";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(7, 110);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(28, 20);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "F5";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -434,38 +478,12 @@
             // 
             this.vocabItemBindingSource.DataSource = typeof(Vocaber1.VocabItem);
             // 
-            // importStructuredVocabularyToolStripMenuItem
+            // exportFormattedVocabularyToolStripMenuItem
             // 
-            this.importStructuredVocabularyToolStripMenuItem.Name = "importStructuredVocabularyToolStripMenuItem";
-            this.importStructuredVocabularyToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
-            this.importStructuredVocabularyToolStripMenuItem.Text = "Import Structured Vocabulary";
-            this.importStructuredVocabularyToolStripMenuItem.Click += new System.EventHandler(this.importStructuredVocabularyToolStripMenuItem_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(7, 110);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(28, 20);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "F5";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(41, 115);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(50, 13);
-            this.label8.TabIndex = 9;
-            this.label8.Text = "Verify old";
-            // 
-            // autoVerifyByPatternToolStripMenuItem
-            // 
-            this.autoVerifyByPatternToolStripMenuItem.Name = "autoVerifyByPatternToolStripMenuItem";
-            this.autoVerifyByPatternToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.autoVerifyByPatternToolStripMenuItem.Text = "Auto verify by pattern";
-            this.autoVerifyByPatternToolStripMenuItem.Click += new System.EventHandler(this.autoVerifyByPatternToolStripMenuItem_Click);
+            this.exportFormattedVocabularyToolStripMenuItem.Name = "exportFormattedVocabularyToolStripMenuItem";
+            this.exportFormattedVocabularyToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
+            this.exportFormattedVocabularyToolStripMenuItem.Text = "Export Formatted Vocabulary";
+            this.exportFormattedVocabularyToolStripMenuItem.Click += new System.EventHandler(this.exportFormattedVocabularyToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -549,6 +567,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ToolStripMenuItem autoVerifyByPatternToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fixWordEndingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportFormattedVocabularyToolStripMenuItem;
     }
 }
 

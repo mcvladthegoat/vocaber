@@ -198,8 +198,8 @@ namespace Vocaber1
             {
                 return;
             }
-            // получаем выбранный файл
-            this.projectPath = saveFileDialog1.FileName;
+            //// получаем выбранный файл
+            //this.projectPath = saveFileDialog1.FileName;
 
             StreamWriter sw = new StreamWriter(saveFileDialog1.FileName, false, System.Text.Encoding.Unicode);
             for(int i = 0; i < this.vocab.Count; i++)
@@ -207,7 +207,7 @@ namespace Vocaber1
                 sw.WriteLine(this.vocab[i].NewValue);
             }
             sw.Close();
-            MessageBox.Show("Successfully exported " + this.vocab.Count + " words");
+            MessageBox.Show("Successfully exported. Count of lines: " + this.vocab.Count);
         }
 
 
@@ -384,6 +384,48 @@ namespace Vocaber1
             this.UpdateBadVocabluary();
             this.UpdateStats();
             MessageBox.Show("Verifying finished. Total lines: " + counter.ToString());
+        }
+
+        private void fixWordEndingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            for(int i=0;i<this.vocab.Count; i++)
+            {
+                var el = this.vocab[i];
+                var splittedVal = el.NewValue.Split(' ');
+                if(!el.isValid && !el.isRaw && splittedVal.Length == 2)
+                {
+                    if (splittedVal[0].Contains("ских"))
+                    {
+                        this.vocab[i].NewValue = String.Concat(splittedVal[0].Replace("ских", "ские "), splittedVal[1].Replace("ов", ""));
+                    }
+                    else if (splittedVal[0].Contains("ской"))
+                    {
+                        this.vocab[i].NewValue = String.Concat(splittedVal[0].Replace("ской", "ская "), splittedVal[1]);
+                    }
+                    //else if (splittedVal[0].Contains("ских"))
+                    //{
+                    //    splittedVal[1].Replace("ы", "а");
+                    //}
+                }
+            }
+        }
+
+        private void exportFormattedVocabularyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            StreamWriter sw = new StreamWriter(saveFileDialog1.FileName, false, System.Text.Encoding.Unicode);
+            for (int i = 0; i < this.vocab.Count; i++)
+            {
+                string tabspace = (this.vocab[i].NewValue.Contains("{") || this.vocab[i].NewValue.Contains("}")) ? "  " : "    ";
+                sw.WriteLine(tabspace + this.vocab[i].NewValue);
+            }
+            sw.Close();
+            MessageBox.Show("Successfully exported with formatting. Count of lines: " + this.vocab.Count);
         }
 
         private void mergeToolStripMenuItem1_Click(object sender, EventArgs e)
