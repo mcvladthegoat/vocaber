@@ -23,7 +23,7 @@ Choose `File` - `Save` (or `Save as`) to save project in xml serialized file. If
 Formatted version:
 ```  
   "AFN" {
-    "Афгани"ё
+    "Афгани"
     "Афганская валюта"
     "Валюта Афганистана"
     "AFN"
@@ -55,3 +55,4 @@ Standart version:
  - [ ] Splitting files by user rules
  - [ ] Importing structured sources without user actions
  - [ ] Fixing words endings (morphology)
+ - [ ] UI customizing, full screen mode
