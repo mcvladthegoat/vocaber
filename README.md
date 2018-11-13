@@ -56,3 +56,4 @@ Standart version:
  - [ ] Importing structured sources without user actions
  - [ ] Fixing words endings (morphology)
  - [ ] UI customizing, full screen mode
+ - [ ] Support "compressed-like" vocabularies
