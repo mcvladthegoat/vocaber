@@ -40,6 +40,8 @@ namespace Vocaber1
         BackgroundWorker bgWorker;
         public int totalLines;
         public bool isPlainProject;
+        public string langFrom, langTo;
+
 
         public String projectPath { get { return this._projectPath; } set { this._projectPath = value; this.toolStripStatusLabel2.Text = value; } }
 
@@ -224,8 +226,11 @@ namespace Vocaber1
 
             while ((line = sr.ReadLine()) != null)
             {
+                string langPair = langFrom + "-" + langTo;
+                System.Console.WriteLine(langPair);
+
                 oldValue = line.Trim();
-                newValue = yt.Translate(oldValue, "en-ru");
+                newValue = yt.Translate(oldValue, langPair);
                 vocab.Add(new VocabItem(oldValue, newValue, counter));
                 System.Console.WriteLine(line);
                 System.Console.WriteLine(newValue);
@@ -258,6 +263,15 @@ namespace Vocaber1
             openFileDialog1.Title = "Select a TXT or similar file";
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
+                LanguageForm lf = new LanguageForm();
+                lf.Owner = this;
+                var lfResult = lf.ShowDialog();
+                System.Console.WriteLine(lfResult.ToString());
+                if (lfResult == System.Windows.Forms.DialogResult.Cancel)
+                {
+                    return;
+                };
+
                 // Start translating
                 vocab = new List<VocabItem>(); badvocab = new List<VocabItem>();
                 this.importFileName = openFileDialog1.FileName;
