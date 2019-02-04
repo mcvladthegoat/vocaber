@@ -57,4 +57,4 @@ Standart version:
  - [ ] Fixing words endings (morphology)
  - [ ] UI customizing, full screen mode
  - [ ] Support "compressed-like" vocabularies
- - [ ] Language selection support
+ - [x] Language selection support
