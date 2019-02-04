@@ -41,6 +41,7 @@
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportFormattedVocabularyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.loadAPIKeysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,14 +75,19 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.vocabItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.exportFormattedVocabularyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBad)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vocabItemBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,9 +96,10 @@
             this.dataGridViewMain.AllowUserToAddRows = false;
             this.dataGridViewMain.AllowUserToDeleteRows = false;
             this.dataGridViewMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewMain.Location = new System.Drawing.Point(18, 57);
+            this.dataGridViewMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewMain.Location = new System.Drawing.Point(3, 16);
             this.dataGridViewMain.Name = "dataGridViewMain";
-            this.dataGridViewMain.Size = new System.Drawing.Size(480, 673);
+            this.dataGridViewMain.Size = new System.Drawing.Size(559, 681);
             this.dataGridViewMain.TabIndex = 0;
             this.dataGridViewMain.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMain_CellContentClick);
             this.dataGridViewMain.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewMain_KeyDown);
@@ -102,9 +109,10 @@
             this.dataGridViewBad.AllowUserToAddRows = false;
             this.dataGridViewBad.AllowUserToDeleteRows = false;
             this.dataGridViewBad.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewBad.Location = new System.Drawing.Point(530, 57);
+            this.dataGridViewBad.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewBad.Location = new System.Drawing.Point(3, 16);
             this.dataGridViewBad.Name = "dataGridViewBad";
-            this.dataGridViewBad.Size = new System.Drawing.Size(480, 673);
+            this.dataGridViewBad.Size = new System.Drawing.Size(557, 681);
             this.dataGridViewBad.TabIndex = 1;
             this.dataGridViewBad.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewBad_KeyDown);
             // 
@@ -117,7 +125,7 @@
             this.toolsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1141, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1258, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -192,6 +200,13 @@
             this.exportToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.exportToolStripMenuItem.Text = "Export Vocabulary";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
+            // 
+            // exportFormattedVocabularyToolStripMenuItem
+            // 
+            this.exportFormattedVocabularyToolStripMenuItem.Name = "exportFormattedVocabularyToolStripMenuItem";
+            this.exportFormattedVocabularyToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
+            this.exportFormattedVocabularyToolStripMenuItem.Text = "Export Formatted Vocabulary";
+            this.exportFormattedVocabularyToolStripMenuItem.Click += new System.EventHandler(this.exportFormattedVocabularyToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
@@ -287,34 +302,43 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Location = new System.Drawing.Point(12, 38);
+            this.groupBox1.Controls.Add(this.dataGridViewMain);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(3, 30);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 30, 3, 30);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(492, 698);
+            this.groupBox1.Size = new System.Drawing.Size(565, 700);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "All words";
             // 
             // groupBox2
             // 
-            this.groupBox2.Location = new System.Drawing.Point(524, 38);
+            this.groupBox2.Controls.Add(this.dataGridViewBad);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(574, 30);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 30, 3, 30);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(492, 698);
+            this.groupBox2.Size = new System.Drawing.Size(563, 700);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Bad words";
             // 
             // groupBox3
             // 
+            this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.groupBox3.Controls.Add(this.rawLabel);
             this.groupBox3.Controls.Add(this.badLabel);
             this.groupBox3.Controls.Add(this.validLabel);
             this.groupBox3.Controls.Add(this.totalLabel);
-            this.groupBox3.Location = new System.Drawing.Point(1022, 38);
+            this.groupBox3.Location = new System.Drawing.Point(8, 13);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 30, 3, 3);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(93, 135);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Stats";
+            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // rawLabel
             // 
@@ -360,7 +384,7 @@
             this.toolStripStatusLabel3});
             this.statusStrip1.Location = new System.Drawing.Point(0, 738);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1141, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1258, 22);
             this.statusStrip1.TabIndex = 5;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -383,6 +407,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBox4.Controls.Add(this.label8);
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.label6);
@@ -391,7 +416,7 @@
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Controls.Add(this.label1);
-            this.groupBox4.Location = new System.Drawing.Point(1023, 179);
+            this.groupBox4.Location = new System.Drawing.Point(8, 151);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(92, 138);
             this.groupBox4.TabIndex = 6;
@@ -474,33 +499,48 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "F2";
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.04878F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.95122F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 117F));
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox2, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1258, 760);
+            this.tableLayoutPanel1.TabIndex = 7;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.groupBox4);
+            this.panel1.Controls.Add(this.groupBox3);
+            this.panel1.Location = new System.Drawing.Point(1143, 18);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 18, 3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(112, 375);
+            this.panel1.TabIndex = 8;
+            // 
             // vocabItemBindingSource
             // 
             this.vocabItemBindingSource.DataSource = typeof(Vocaber1.VocabItem);
-            // 
-            // exportFormattedVocabularyToolStripMenuItem
-            // 
-            this.exportFormattedVocabularyToolStripMenuItem.Name = "exportFormattedVocabularyToolStripMenuItem";
-            this.exportFormattedVocabularyToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
-            this.exportFormattedVocabularyToolStripMenuItem.Text = "Export Formatted Vocabulary";
-            this.exportFormattedVocabularyToolStripMenuItem.Click += new System.EventHandler(this.exportFormattedVocabularyToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1141, 760);
-            this.Controls.Add(this.groupBox4);
+            this.ClientSize = new System.Drawing.Size(1258, 760);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.dataGridViewBad);
-            this.Controls.Add(this.dataGridViewMain);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "Vocaber";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -508,12 +548,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBad)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.vocabItemBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -569,6 +613,8 @@
         private System.Windows.Forms.ToolStripMenuItem autoVerifyByPatternToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fixWordEndingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportFormattedVocabularyToolStripMenuItem;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 
