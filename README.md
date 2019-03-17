@@ -22,30 +22,30 @@ Choose `File` - `Save` (or `Save as`) to save project in xml serialized file. If
 
 Formatted version:
 ```  
-  "AFN" {
-    "Афгани"
-    "Афганская валюта"
-    "Валюта Афганистана"
-    "AFN"
+  "ABC" {
+    "str1"
+    "str2"
+    "str3"
+    "str4"
   }
-  "ALL" {
-    "Валюта Албании"
-    "Албанская валюта"
-    "Албанский лек"
+  "DEF" {
+    "str1"
+    "str2"
+    "str3"
 ```
 
 Standart version:
 ```
-"AFN" {
-"Афгани"
-"Афганская валюта"
-"Валюта Афганистана"
-"AFN"
+"ABC" {
+"str1"
+"str2"
+"str3"
+"str4"
 }
-"ALL" {
-"Валюта Албании"
-"Албанская валюта"
-"Албанский лек"
+"DEF" {
+"str1"
+"str2"
+"str3"
 ```
 ### Bonus
 `Tools` - `Merge` can be used to merge text files in two clicks.
